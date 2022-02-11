@@ -53,6 +53,15 @@ if __name__ == "__main__":
 	last_send_time = time.monotonic()
 	while True:
 		current_time = time.monotonic()
+
+		# calculate the max acceleration
+		# if it is over the threshold, then we start blinking
+		# if the button is pressed while blinking, then we
+		#		stop blinking, and send different payload
+		# if the LED stops blinking without the button being pressed
+		#		then we send the payload
+		# send payload every 30 seconds or something
+
 		if (current_time - last_send_time) > 0.5:
 			send_data(
 				accelerometer.acceleration, 
