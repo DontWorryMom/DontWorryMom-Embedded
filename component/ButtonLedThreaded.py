@@ -65,13 +65,11 @@ class ThreadedGPIO(threading.Thread):
 	def stop_blinking(self):
 		current_time = time.monotonic()
 		blink_end_time = self.blink_start_time + self.blink_count * (self.blink_time_on + self.blink_time_off) - self.blink_time_off
-
-		self.blink_start_time = 0
-		self.blink_count = 0
-		self.blink_time_on = 1.0	# this doesn't matter based on impl details
-		self.blink_time_off = 1.0	# this doesn't matter either
-
 		if current_time < blink_end_time:
+			self.blink_start_time = 0
+			self.blink_count = 0
+			self.blink_time_on = 1.0	# this doesn't matter based on impl details
+			self.blink_time_off = 1.0	# this doesn't matter either
 			# blinking was interrupted, so call the finish handler with True
 			self.blink_finish_handler(True)	
 	
