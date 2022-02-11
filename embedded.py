@@ -5,6 +5,7 @@ from component.ButtonLedThreaded import ThreadedGPIO
 import board
 import busio
 import adafruit_adxl34x
+import requests
 
 # Define Constants
 PIN_LED = 4
